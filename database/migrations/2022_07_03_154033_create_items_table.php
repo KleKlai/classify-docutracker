@@ -15,7 +15,7 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('withdrawal_slip_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignUuid('withdrawal_slip_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('item_code');
             $table->string('item_description');
             $table->bigInteger('qty');

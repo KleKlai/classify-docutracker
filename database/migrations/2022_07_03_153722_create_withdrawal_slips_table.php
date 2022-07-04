@@ -14,20 +14,21 @@ class CreateWithdrawalSlipsTable extends Migration
     public function up()
     {
         Schema::create('withdrawal_slips', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
+            $table->uuid('id')->primary();
             $table->string('customer_name');
             $table->string('document_series_no');
             $table->string('qr_no');
             $table->string('pallet_no');
             $table->string('warehouse');
-            $table->string('wh_location');
+            $table->string('wh_location'); 
             $table->string('prepared_by');
             $table->string('approved_by');
             $table->string('release_by');
             $table->string('customer_date');
             $table->string('sales_admin');
             $table->string('wh_incharge');
-            $table->boolean('status'); //Publish or Draft
+            $table->boolean('status')->default(0); //Publish or Draft
             $table->timestamps();
         });
     }

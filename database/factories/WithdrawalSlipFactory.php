@@ -17,6 +17,7 @@ class WithdrawalSlipFactory extends Factory
         return [
             'customer_name'         => $this->faker->name(),
             'document_series_no'    => $this->faker->randomNumber($nbDigits = NULL, $strict = false),
+            'customer_date'         => $this->faker->randomNumber($nbDigits = NULL, $strict = false),
             'qr_no'                 => $this->faker->numberBetween($min = 1000, $max = 9000),
             'pallet_no'             => $this->faker->numberBetween($min = 1000, $max = 9000),
             'warehouse'             => $this->faker->city(),
@@ -24,7 +25,9 @@ class WithdrawalSlipFactory extends Factory
             'prepared_by'           => $this->faker->name(),
             'approved_by'           => $this->faker->name(),
             'release_by'            => $this->faker->name(),
-            'status'                => $this->faker->boolean()
+            'status'                => $this->faker->boolean(),
+            'sales_admin'           => $this->faker->name(),
+            'wh_incharge'           => $this->faker->name(),
         ];
     }
 }

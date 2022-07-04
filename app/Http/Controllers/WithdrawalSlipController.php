@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\WithdrawalSlip;
+use App\Models\Item;
 use Illuminate\Http\Request;
-use App\Models\Withdrawal;
 use Exception;
 
 class WithdrawalSlipController extends Controller
@@ -38,23 +38,31 @@ class WithdrawalSlipController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-            $withdrawal = Withdrawal::create($request->all());
-            
-            $notification = array(
-                'message' => 'Product saved successfully!',
-                'alert-type' => 'success'
-            );
-            return redirect()->route('dashboard')->with($notification);
+        
+        // dd($request);
+        $withdrawalSlip = WithdrawalSlip::create([
+            'customer_name' => $request->customer_name,
+            'customer_date' => $request->customer_date,
+            'pallet_no' => $request->pallet_no,
+            'document_series_no' => $request->document_series_no,
+            'qr_no' => $request->qr_no,
+            'wh_location' => $request->wh_location,
+            'warehouse' => $request->warehouse,
+            'prepared_by' => $request->prepared_by,
+            'approved_by' => $request->approved_by,
+            'release_by' => $request->release_by,
+            'sales_admin' => $request->sales_admin,
+            'wh_incharge' => $request->wh_incharge,
+        ]);
 
-        } catch (Exception $e) {
-            $notification = array(
-                'message' => $e->getMessage(),
-                'alert-type' => 'error'
-            );
+        // $item = Item::create([
 
-            return redirect()->route('receipt.index')->with($notification);
+        // ]);
+        foreach ($request->moreFields as $key => $value) {
+            // Item::create($value);
+            dd($value);
         }
+
     }
 
     /**

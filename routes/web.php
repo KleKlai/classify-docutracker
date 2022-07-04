@@ -29,6 +29,10 @@ Route::get('/fake', function () {
     dd($data->items);
 });
 
+Route::get('/receipt', [App\Http\Controllers\WithdrawalSlipController::class, 'index'])->name('receipt.index');
+
+Route::post('/save_receipt', [App\Http\Controllers\WithdrawalSlipController::class, 'store']);
+
 Route::get('/verify/{key?}', [VerifyDocuments::class, 'Verify_documents']);
 
 require __DIR__.'/auth.php';

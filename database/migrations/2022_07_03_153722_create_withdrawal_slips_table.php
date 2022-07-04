@@ -24,6 +24,9 @@ class CreateWithdrawalSlipsTable extends Migration
             $table->string('prepared_by');
             $table->string('approved_by');
             $table->string('release_by');
+            $table->string('customer_date');
+            $table->string('sales_admin');
+            $table->string('wh_incharge');
             $table->boolean('status'); //Publish or Draft
             $table->timestamps();
         });

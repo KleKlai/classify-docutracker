@@ -13,95 +13,8 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container"> 
 
-                        <button type="button" class="btn btn-primary btn-sm float-end" onclick="window.location='{{ url("/receipt") }}'" >
-                            Create Receipt
-                        </button>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <table class="table align-middle mb-0 bg-white">
-                            <thead class="">
-                              <tr>
-                                <th>Document Series </th>
-                                <th>Customer Name</th>
-                                <th>Prepared By</th>
-                                <th>Approved By</th>
-                                <th>Release By</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <div class="d-flex align-items-center">
-                                    <div class="ms-3">
-                                      <p class="fw-bold mb-1">GF11-00</p>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td>
-                                  <p class="text-muted mb-0">Jane Doe</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted mb-0">Jane Doe</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted mb-0">Jane Doe</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted mb-0">Jane Doe</p>
-                                </td>
-                                <td>
-                                    <p class="fw-bold mb-1">draft</p>
-                                </td>
-                                <td>
-                                  <button
-                                          type="button"
-                                          class="btn btn-link btn-rounded btn-sm fw-bold"
-                                          data-mdb-ripple-color="dark"
-                                          >
-                                    Edit
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <div class="d-flex align-items-center">
-                                    <div class="ms-3">
-                                      <p class="fw-bold mb-1">GF11-001</p>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td>
-                                  <p class="text-muted mb-0">Jane Doe</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted mb-0">Jane Doe</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted mb-0">Jane Doe</p>
-                                </td>
-                                <td>
-                                    <p class="text-muted mb-0">Jane Doe</p>
-                                </td>
-                                <td>
-                                    <p class="fw-bold mb-1">save</p>
-                                </td>
-                                <td>
-                                  <button
-                                          type="button"
-                                          class="btn btn-link btn-rounded btn-sm fw-bold"
-                                          data-mdb-ripple-color="dark"
-                                          >
-                                    Edit
-                                  </button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
 
-                        {{-- <div class="w-75 p-3">
+                        <div class="w-75 p-3">
                             <h1>Nutrihogs Corporation</h1>
                             <h2>Merchandise Withdrawal Slip</h2>
                 
@@ -126,7 +39,7 @@
                                   </div>
                                   <div class="col">
                                     <div class="form-floating mb-3">
-                                        <input name="series_no" type="text" class="form-control" id="floatingInput" readonly value="123213">
+                                        <input name="document_series_no" type="text" class="form-control" id="floatingInput" readonly value="123213">
                                         <label for="floatingInput">Document Series Number</label>
                                     </div>
                                     <div class="form-floating mb-3">
@@ -134,7 +47,7 @@
                                         <label for="floatingInput">QR Number</label>
                                     </div>                   
                                     <div class="form-floating mb-3">
-                                        <input name="wh_loc" type="text" class="form-control" id="floatingInput" placeholder="Warehouse Location">
+                                        <input name="wh_location" type="text" class="form-control" id="floatingInput" placeholder="Warehouse Location">
                                         <label for="floatingInput">Warehouse Location</label>
                                     </div>  
                                     <div class="form-floating mb-3">
@@ -182,7 +95,7 @@
                                         <label for="floatingInput">Approved By</label>
                                     </div>  
                                     <div class="form-floating mb-3">
-                                        <input name="released_by" type="text" class="form-control" id="floatingInput" placeholder="Released By">
+                                        <input name="release_by" type="text" class="form-control" id="floatingInput" placeholder="Released By">
                                         <label for="floatingInput">Released By</label>
                                     </div>                         
                                   </div>
@@ -203,7 +116,7 @@
                         <button type="submit" class="btn btn-primary btn-lg ">Generate Receipt</button>
                         <button type="button" class="btn btn-warning btn-lg">Save as Draft</button>
                     </form>
-                    </div> --}}
+                    </div>
                 </div>
             </div> 
         </div>
@@ -226,27 +139,6 @@
             // to remove fields
             $(document).on('click','.remove-tr', function (e) {
                 $(this).parents('tr').remove();
-            });
-    
-            // generate receipt testing data value
-            $(document).on('click','.generate_receipt', function (e) {
-    
-                var data = {
-                    'customer_name' : $("input[name='customer_name']").val(),
-                    'customer_date' : $("input[name='customer_date']").val(),
-                    'pallet_no' : $("input[name='pallet_no']").val(),
-                    'series_no' : $("input[name='series_no']").val(),
-                    'qr_no' : $("input[name='qr_no']").val(),
-                    'wh_loc' : $("input[name='wh_loc']").val(),
-                    'warehouse' : $("input[name='warehouse']").val(),
-                    'prepared_by' : $("input[name='prepared_by']").val(),
-                    'approved_by' : $("input[name='approved_by']").val(),
-                    'released_by' : $("input[name='released_by']").val(),
-                    'sales_admin' : $("input[name='sales_admin']").val(),
-                    'wh_incharge' : $("input[name='wh_incharge']").val(),
-                    'moreFields[0][item_code]' : $("input[name='moreFields[0][item_code]']").val(),
-                }
-                console.log(data)
             });
         </script>
 </x-app-layout>
